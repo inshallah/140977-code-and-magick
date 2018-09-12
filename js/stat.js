@@ -15,19 +15,19 @@ var me = {
 };
 
 // Функция отрисовки облака и тени сообщения
-var renderCloud = function(ctx, x, y, color) {
+var renderCloud = function (ctx, x, y, color) {
   ctx.fillStyle = color;
   ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGHT);
 };
 
 // Функция вывода текста в облаке сообщения
-var writeText = function(ctx, text, x, y, font) {
+var writeText = function (ctx, text, x, y, font) {
   ctx.font = font;
-  ctx.fillText(ctx, text,  x, y);
+  ctx.fillText(ctx, text, x, y);
 };
 
 // Функция выбора максимального времени прохождения игры
-var getMaxItem = function(array) {
+var getMaxItem = function (array) {
 var maxItem = array[0];
 
   for (var i = 1; i < array.length; i++) {
@@ -39,7 +39,7 @@ var maxItem = array[0];
 };
 
 
-window.renderStatistics = function(ctx, names, times) {
+window.renderStatistics = function (ctx, names, times) {
 
   // Тень от облака
   renderCloud(ctx, CLOUD_X + GAP, CLOUD_Y + GAP, 'rgba(0, 0, 0, 0.7)');
