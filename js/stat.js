@@ -22,8 +22,9 @@ var renderCloud = function (ctx, x, y, color) {
 
 // Функция вывода текста в облаке сообщения
 var writeText = function (ctx, text, x, y, font) {
+  ctx.fillStyle = '#000';
   ctx.font = font;
-  ctx.fillText(ctx, text, x, y);
+  ctx.fillText(text, x, y);
 };
 
 // Функция выбора максимального времени прохождения игры
@@ -48,8 +49,8 @@ window.renderStatistics = function (ctx, names, times) {
   renderCloud(ctx, CLOUD_X, CLOUD_Y, '#fff');
 
   // Текст сообщения
-  writeText(ctx, 'Ура вы победили!', CLOUD_X + GAP, CLOUD_Y + GAP, '16px PT Mono');
-  writeText(ctx, 'Список результатов:', CLOUD_X + GAP, CLOUD_Y + GAP * 2, '16px PT Mono');
+  writeText(ctx, 'Ура вы победили!', CLOUD_X + BAR_GAP, CLOUD_Y + GAP * 2, '16px PT Mono');
+  writeText(ctx, 'Список результатов:', CLOUD_X + BAR_GAP, CLOUD_Y + GAP * 4, '16px PT Mono');
 
   // maxTime     = BAR_HEIGHT;
   // times[i]    =    X
