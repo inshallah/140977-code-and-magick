@@ -70,7 +70,7 @@ window.renderStatistics = function (ctx, names, times) {
 
     ctx.fillRect(forX, CLOUD_HEIGHT - trueHeight - GAP * 2, BAR_WIDTH, trueHeight);
     ctx.fillText(names[i], forX, 75);
-    ctx.fillText(Math.floor(times[i]), forX, 95);
+    ctx.fillText(Math.floor(times[i]), forX, CLOUD_HEIGHT - GAP / 2);
   }
 };
 
