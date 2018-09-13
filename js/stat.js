@@ -31,9 +31,9 @@ var writeText = function (ctx, text, x, y, font) {
 var getMaxItem = function (array) {
   var maxItem = array[0];
 
-  for (var i = 1; i < array.length; i++) {
+  for (var i = 1; i <= array.length; i++) {
     if (array[i] > maxItem) {
-      maxItem = array[i] / BAR_HEIGHT;
+      maxItem = array[i];
     }
   }
   return maxItem;
