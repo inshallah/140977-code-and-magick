@@ -60,7 +60,7 @@ window.renderStatistics = function (ctx, names, times) {
     var trueHeight = (times[i] * BAR_HEIGHT) / maxTime;
     var forYrect = CLOUD_HEIGHT - trueHeight - GAP * 2;
     var forYtext = CLOUD_HEIGHT - GAP / 2;
-    names[i] === 'Вы' ? ctx.fillStyle = 'rgba(255, 0, 0, 1)' : ctx.fillStyle = 'rgba(28, 79, 175, ' + Math.random().toFixed(1) + ')';
+    ctx.fillStyle = (names[i] === 'Вы') ? 'rgba(255, 0, 0, 1)' : 'rgba(28, 79, 175, ' + Math.random().toFixed(1) + ')';
     ctx.fillRect(forXrect, forYrect, BAR_WIDTH, trueHeight);
     ctx.fillText(names[i], forXrect, 75);
     ctx.fillText(Math.floor(times[i]), forXrect, forYtext);
