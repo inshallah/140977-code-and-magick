@@ -1,5 +1,8 @@
 'use strict';
 
+
+// ПРОГРАММА ДЛЯ СОЗДАНИЯ ПОХОЖИХ ВОЛШЕБНИКОВ
+
 var userDialogElement = document.querySelector('.setup');
 userDialogElement.classList.remove('hidden');
 
@@ -63,4 +66,88 @@ var render = function () {
 
 render();
 
+
+// ОБРАБОТЧИКИ СОБЫТИЙ
+var ESC_KEYCODE = 27;
+var ENTER_KEYCODE = 13;
+
+var setup = document.querySelector('.setup');
+var setupOpen = document.querySelector('.setup-open');
+var setupClose = setup.querySelector('.setup-close');
+
+var onPopupEscPress = function (evt) {
+  if (evt.keyCode === ESC_KEYCODE) {
+    closePopup();
+  }
+};
+
+var openPopup = function () {
+  setup.classList.remove('hidden');
+  document.addEventListener('keydown', onPopupEscPress);
+};
+
+var closePopup = function () {
+  setup.classList.add('hidden');
+  document.removeEventListener('keydown', onPopupEscPress);
+};
+
+setupOpen.addEventListener('click', function () {
+  openPopup();
+});
+
+setupOpen.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === ENTER_KEYCODE) {
+    openPopup();
+  }
+});
+
+setupClose.addEventListener('click', function () {
+  closePopup();
+});
+
+setupClose.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === ENTER_KEYCODE) {
+    closePopup();
+  }
+});
+
+var buttonSave = setup.querySelector('.setup-submit');
+
+// Если диалог открыт, нажатие на кнопку «Сохранить» приводит к отправке формы
+buttonSave.addEventListener('click', function () {
+  var form = setup.querySelector('.setup-wizard-form').action = 'https://js.dump.academy/code-and-magick';
+  form.submit();
+});
+
+// Если диалог открыт и фокус находится на кнопке «Сохранить», нажатие на ENTER приводит к отправке формы
+buttonSave.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === ENTER_KEYCODE) {
+    var form = setup.querySelector('.setup-wizard-form');
+    form.action = 'https://js.dump.academy/code-and-magick';
+    form.submit();
+  }
+});
+
+var COAT_COLOR = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
+var EYES_COLOR = ['black', 'red', 'blue', 'yellow', 'green'];
+var FIREBALL_COLOR = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
+
+// Изменение цвета мантии и цвета глаз персонажа по нажатию
+var setupWizard = setup.querySelector('.setup-wizard');
+var wizardCoatColor = setup.querySelector('input[name = "coat-color"]');
+// var wizardEyesColor = setup.querySelector('input[name = "eyes-color"]');
+setupWizard.addEventListener('click', function () {
+  setup.querySelector('.wizard-coat').style.fill = COAT_COLOR[getRandomInt(0, COAT_COLOR.length - 1)];
+  setup.querySelector('.wizard-eyes').style.fill = EYES_COLOR[getRandomInt(0, EYES_COLOR.length - 1)];
+  // var coatColor = setup.querySelector('.wizard-coat');
+  // coatColor.style.fill = COAT_COLOR[getRandomInt(0, COAT_COLOR.length - 1)];
+  wizardCoatColor.input.value = COAT_COLOR[getRandomInt(0, COAT_COLOR.length - 1)];
+});
+
+
+// Изменение цвета фаерболов по нажатию
+var fireballSetup = setup.querySelector('.setup-fireball-wrap');
+fireballSetup.addEventListener('click', function () {
+  fireballSetup.style.background = FIREBALL_COLOR[getRandomInt(0, FIREBALL_COLOR.length - 1)];
+});
 
